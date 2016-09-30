@@ -14,6 +14,7 @@ token = get_slack_token()
 
 sc = SlackClient(token)
 if sc.rtm_connect():
+	print "Slackbot is alive!"
 	while True:
 		print sc.rtm_read()
 		time.sleep(1)
