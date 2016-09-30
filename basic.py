@@ -11,6 +11,7 @@ def get_slack_token():
 		return os.environ[key]
 
 token = get_slack_token()
+print "Got token"
 
 sc = SlackClient(token)
 if sc.rtm_connect():
