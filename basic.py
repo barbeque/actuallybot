@@ -10,6 +10,12 @@ def get_slack_token():
 	else:
 		return os.environ[key]
 
+def get_response_for_message(message_text):
+	message_text = message_text.lower()
+	if "google apps" in message_text:
+		return "I think you mean G Spot."
+	return None
+
 token = get_slack_token()
 print "Got token"
 
@@ -21,7 +27,10 @@ if sc.rtm_connect():
 		for event in new_events:
 			if event["type"] == "message" and "text" in event:
 				message_text = event["text"]
-				print message_text
+				response = get_response_for_message(message_text)
+				if response is not None:
+					# Correct them!
+					sc.rtm_send_message(event["channel"], response)
 		time.sleep(3)
 else:
 	print "Connection failed, invalid token?"
