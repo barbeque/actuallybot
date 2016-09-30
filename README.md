@@ -4,3 +4,6 @@ A slack bot that corrects common errors.
 ##How to set up
  - On Heroku configure one worker dyno
  - Set Heroku's environment variable SLACK_TOKEN to the slack token
+
+##Future plans
+ - Turn this into a bot that can do some actual useful work instead of just doing the pre-canned slackbot responses built into slack
