@@ -17,8 +17,12 @@ sc = SlackClient(token)
 if sc.rtm_connect():
 	print "Slackbot is alive!"
 	while True:
-		print sc.rtm_read()
-		time.sleep(1)
+		new_events = sc.rtm_read()
+		for event in new_events:
+			if event["type"] == "message" and "text" in event:
+				message_text = event["text"]
+				print message_text
+		time.sleep(3)
 else:
 	print "Connection failed, invalid token?"
 
