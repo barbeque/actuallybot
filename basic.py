@@ -24,7 +24,7 @@ if sc.rtm_connect():
 	print "Slackbot is alive!"
 	while True:
 		new_events = sc.rtm_read()
-		for event in new_events:
+		for event in filter(lambda e: "type" in e, new_events):
 			if event["type"] == "message" and "text" in event:
 				message_text = event["text"]
 				response = get_response_for_message(message_text)
