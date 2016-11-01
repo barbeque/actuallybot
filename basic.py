@@ -10,11 +10,8 @@ def get_slack_token():
 	else:
 		return os.environ[key]
 
-# TODO: load from a file
 def get_response_for_message(message_text):
 	message_text = message_text.lower()
-	if "google apps" in message_text:
-		return "I think you mean G Spot."
 	if "dodge ram" in message_text:
 		return "More like Dodge Cram."
 	return None
